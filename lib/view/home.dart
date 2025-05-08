@@ -1,54 +1,53 @@
+import 'package:app1/controller/homecontroller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Home extends StatelessWidget {
+  //Obx ==> dependency injection
+  final HomeController controller = Get.put(HomeController());
+  Home({super.key});
 
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home'), backgroundColor: Colors.blue),
-      body: Column(
-        children: [
-          Container(height: 200),
-          MaterialButton(
-            onPressed: () {
-              Get.toNamed("/pageone");
-            },
-            color: Colors.blue,
-            child: Text("PageOne"),
-          ),
-          Container(height: 10),
-          MaterialButton(
-            onPressed: () {
-              Get.offNamed("/pagetwo");
-            },
-            color: Colors.blue,
-            child: Text("PageTwo"),
-          ),
-          Container(height: 10),
-          MaterialButton(
-            onPressed: () {
-              Get.offAllNamed("/pagethree");
-            },
-            color: Colors.blue,
-            child: Text("PageThree"),
-          ),
-          Container(height: 10),
-          MaterialButton(
-            onPressed: () {
-              Get.back(); //المستخدم ما بيخرج من التطبيق في هاي الحالة==maybepop()
-              //Navigator.of(context).pop(); //المستخدم بيخرج من التطبيق في هاي الحالة
-            },
-            color: Colors.blue,
-            child: Text("Back"),
-          ),
-        ],
+      appBar: AppBar(
+        title: const Text('HomePage', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.blue,
+      ),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 130),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            //GetBuilder - Getx
+            Obx(
+              () => Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      controller.decrement();
+                    },
+                    icon: Icon(Icons.remove),
+                  ),
+                  SizedBox(width: 20), // مسافة بين الأزرار والنص
+                  Text(
+                    "${controller.counter}", //value == RxInt
+                    style: TextStyle(fontSize: 30),
+                  ), // أنظف وأوضح
+                  SizedBox(width: 20), // مسافة بين الأزرار والنص
+                  IconButton(
+                    onPressed: () {
+                      controller.increment();
+                    },
+                    icon: Icon(Icons.add),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
