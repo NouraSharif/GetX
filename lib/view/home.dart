@@ -1,9 +1,10 @@
+import 'package:app1/view/screenone.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
-
+  //final controller = Get.lazyPut(() => HomeController(), fenix: true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +20,7 @@ class Home extends StatelessWidget {
             MaterialButton(
               color: Colors.blue,
               onPressed: () {
-                Get.toNamed('/screenone');
+                Get.to(() => ScreenOne());
               },
               child: Text('ScreenOne', style: TextStyle(color: Colors.white)),
             ),
