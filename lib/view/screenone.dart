@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class ScreenOne extends StatelessWidget {
   ScreenOne({super.key});
   //HomeController controller = Get.put(HomeController(), permanent: true);==لانه lazyPut كافية
-  final c = Get.lazyPut(() => HomeController());
+  //final c = Get.lazyPut(() => HomeController());
   final HomeController controller = Get.find();
   //final==>لحتى يلتغى الديباق كامل
   @override

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 // ignore: must_be_immutable
 class ScreenTwo extends StatelessWidget {
   ScreenTwo({super.key});
-  final c = Get.lazyPut(() => HomeController());
+  //final c = Get.lazyPut(() => HomeController());
   HomeController controller = Get.find();
 
   @override
@@ -23,7 +23,7 @@ class ScreenTwo extends StatelessWidget {
             Row(
               children: [
                 GetBuilder<HomeController>(
-                  init: HomeController(),
+                  //init: HomeController(),==باستخدامي للbinding مش لازمة
                   builder:
                       (controller) => Text(
                         "${controller.counter}",

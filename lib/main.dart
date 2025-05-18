@@ -1,3 +1,4 @@
+import 'package:app1/utils/mybinding.dart';
 import 'package:app1/view/home.dart';
 import 'package:app1/view/screenfour.dart';
 import 'package:app1/view/screenone.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
+      initialBinding: MyBinding(),
       getPages: [
         GetPage(name: "/screenone", page: () => ScreenOne()),
         GetPage(name: "/screentwo", page: () => ScreenTwo()),
