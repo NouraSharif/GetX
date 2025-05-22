@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Admin extends StatelessWidget {
+  const Admin({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home'), backgroundColor: Colors.blue),
+      appBar: AppBar(title: const Text('Admin'), backgroundColor: Colors.blue),
       body: Center(
         child: MaterialButton(
           color: Colors.blue,

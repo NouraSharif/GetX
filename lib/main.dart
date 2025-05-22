@@ -1,13 +1,18 @@
-import 'package:app1/utils/mybinding.dart';
+import 'package:app1/middleware/auth_middleware.dart';
+import 'package:app1/middleware/super_middleware.dart';
+import 'package:app1/view/admin.dart';
 import 'package:app1/view/home.dart';
-import 'package:app1/view/screenfour.dart';
-import 'package:app1/view/screenone.dart';
-import 'package:app1/view/screenthree.dart';
-import 'package:app1/view/screentwo.dart';
+import 'package:app1/view/login.dart';
+import 'package:app1/view/super.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+SharedPreferences? sharedpref;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  sharedpref = await SharedPreferences.getInstance();
+
   runApp(MyApp());
 }
 
@@ -18,13 +23,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
-      initialBinding: MyBinding(),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      initialRoute: "/",
       getPages: [
-        GetPage(name: "/screenone", page: () => ScreenOne()),
-        GetPage(name: "/screentwo", page: () => ScreenTwo()),
-        GetPage(name: "/screenthree", page: () => ScreenThree()),
-        GetPage(name: "/screenfour", page: () => ScreenFour()),
+        GetPage(
+          name: "/",
+          page: () => Login(),
+          middlewares: [AuthMiddleWare(), SuperMiddleWare()],
+        ),
+        GetPage(name: "/home", page: () => Home()),
+        GetPage(name: "/admin", page: () => Admin()),
+        GetPage(name: "/super", page: () => Super()),
       ],
     );
   }
