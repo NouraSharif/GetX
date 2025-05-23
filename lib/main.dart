@@ -1,19 +1,16 @@
-import 'package:app1/middleware/auth_middleware.dart';
-import 'package:app1/middleware/super_middleware.dart';
-import 'package:app1/view/admin.dart';
+import 'package:app1/services/settingsservices.dart';
 import 'package:app1/view/home.dart';
-import 'package:app1/view/login.dart';
-import 'package:app1/view/super.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get/get.dart';
 
-SharedPreferences? sharedpref;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  sharedpref = await SharedPreferences.getInstance();
-
+  await initalServices();
   runApp(MyApp());
+}
+
+Future initalServices() async {
+  await Get.putAsync(() => SettingsServices().init());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,17 +21,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: "/",
-      getPages: [
-        GetPage(
-          name: "/",
-          page: () => Login(),
-          middlewares: [AuthMiddleWare(), SuperMiddleWare()],
-        ),
-        GetPage(name: "/home", page: () => Home()),
-        GetPage(name: "/admin", page: () => Admin()),
-        GetPage(name: "/super", page: () => Super()),
-      ],
+      initialRoute: "/home",
+      getPages: [GetPage(name: "/home", page: () => Home())],
     );
   }
 }
