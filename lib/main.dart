@@ -1,16 +1,11 @@
-import 'package:app1/services/settingsservices.dart';
+import 'package:app1/locale/locale.dart';
 import 'package:app1/view/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initalServices();
   runApp(MyApp());
-}
-
-Future initalServices() async {
-  await Get.putAsync(() => SettingsServices().init());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,6 +16,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
+      locale: Get.deviceLocale,
+      translations: MyLocale(),
       initialRoute: "/home",
       getPages: [GetPage(name: "/home", page: () => Home())],
     );
