@@ -1,4 +1,3 @@
-import 'package:app1/locale/locale_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,7 +6,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MyLocaleController controllerlang = Get.find();
     return Scaffold(
       appBar: AppBar(title: Text('1'.tr), backgroundColor: Colors.blue),
       body: Container(
@@ -19,19 +17,33 @@ class Home extends StatelessWidget {
               child: MaterialButton(
                 color: Colors.blue,
                 onPressed: () {
-                  controllerlang.changeLang("ar");
+                  Get.defaultDialog(
+                    title: "تنبيه",
+                    //middleText: "الرجاء محاولة الاتصال مرة اخرى",
+                    content: Column(
+                      children: [
+                        Text("الرجاء محاولة الاتصال مرة اخرى"),
+                        SizedBox(height: 10),
+                        Text("هذا نص اضافي في مربع الحوار"),
+                      ],
+                    ),
+                    titleStyle: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    middleTextStyle: TextStyle(color: Colors.blueGrey),
+                    //textCancel: "Cansel",
+                    // onCancel: () => print("cancel"),
+                    cancel: InkWell(
+                      child: Text("cancel"),
+                      onTap: () => print("cansel"),
+                    ),
+                    textConfirm: "Ok",
+
+                    onConfirm: () => print("ok"),
+                  );
                 },
-                child: Text("2".tr),
-              ),
-            ),
-            SizedBox(height: 10),
-            Center(
-              child: MaterialButton(
-                color: Colors.blue,
-                onPressed: () {
-                  controllerlang.changeLang("en");
-                },
-                child: Text("3".tr),
+                child: Text("Dialog Getx"),
               ),
             ),
           ],
