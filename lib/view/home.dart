@@ -17,28 +17,29 @@ class Home extends StatelessWidget {
               child: MaterialButton(
                 color: Colors.blue,
                 onPressed: () {
-                  Get.snackbar(
-                    "Woow!",
-                    "Well Done",
-                    backgroundColor: Colors.red,
-                    duration: Duration(seconds: 10),
-                    //snackPosition: SnackPosition.BOTTOM,
-                    boxShadows: [
-                      BoxShadow(
-                        color: Colors.amberAccent,
-                        blurRadius: 40,
-                        offset: Offset(2.0, 2.0),
-                        spreadRadius: 10,
+                  Get.bottomSheet(
+                    Container(
+                      padding: EdgeInsets.all(40),
+                      //ضفنا خواص متطابقة لخواص البوردر
+                      decoration: ShapeDecoration(
+                        color: Colors.white, // لا تنسَ لون الخلفية لتكون ظاهرة
+                        shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                       ),
-                    ],
-                    maxWidth: 450.0,
-                    titleText: Text(
-                      "Very Good!",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      height:
+                          200, // 👈 هذا يحدد الارتفاع فقط على قدر مربع في أسفل الشاشة
+                      width: 500,
+
+                      child: Text("Hello everyone"),
                     ),
-                    messageText: Text(
-                      "You have successfully completed the task.",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+
+                    enterBottomSheetDuration: Duration(seconds: 1),
+                    exitBottomSheetDuration: Duration(seconds: 1),
+                    isDismissible: true,
+                    shape: BeveledRectangleBorder(
+                      side: BorderSide(color: Colors.blue, width: 5.0),
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
                   );
                 },
