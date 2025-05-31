@@ -7,7 +7,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('1'.tr), backgroundColor: Colors.blue),
+      appBar: AppBar(title: Text("Hompage"), backgroundColor: Colors.blue),
       body: Container(
         padding: EdgeInsets.all(10),
         child: Column(
@@ -17,33 +17,32 @@ class Home extends StatelessWidget {
               child: MaterialButton(
                 color: Colors.blue,
                 onPressed: () {
-                  Get.defaultDialog(
-                    title: "تنبيه",
-                    //middleText: "الرجاء محاولة الاتصال مرة اخرى",
-                    content: Column(
-                      children: [
-                        Text("الرجاء محاولة الاتصال مرة اخرى"),
-                        SizedBox(height: 10),
-                        Text("هذا نص اضافي في مربع الحوار"),
-                      ],
+                  Get.snackbar(
+                    "Woow!",
+                    "Well Done",
+                    backgroundColor: Colors.red,
+                    duration: Duration(seconds: 10),
+                    //snackPosition: SnackPosition.BOTTOM,
+                    boxShadows: [
+                      BoxShadow(
+                        color: Colors.amberAccent,
+                        blurRadius: 40,
+                        offset: Offset(2.0, 2.0),
+                        spreadRadius: 10,
+                      ),
+                    ],
+                    maxWidth: 450.0,
+                    titleText: Text(
+                      "Very Good!",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
-                    titleStyle: TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.bold,
+                    messageText: Text(
+                      "You have successfully completed the task.",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
-                    middleTextStyle: TextStyle(color: Colors.blueGrey),
-                    //textCancel: "Cansel",
-                    // onCancel: () => print("cancel"),
-                    cancel: InkWell(
-                      child: Text("cancel"),
-                      onTap: () => print("cansel"),
-                    ),
-                    textConfirm: "Ok",
-
-                    onConfirm: () => print("ok"),
                   );
                 },
-                child: Text("Dialog Getx"),
+                child: Text("SnakBar Getx"),
               ),
             ),
           ],
