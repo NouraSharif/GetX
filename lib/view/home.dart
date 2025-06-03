@@ -17,33 +17,17 @@ class Home extends StatelessWidget {
               child: MaterialButton(
                 color: Colors.blue,
                 onPressed: () {
-                  Get.bottomSheet(
-                    Container(
-                      padding: EdgeInsets.all(40),
-                      //ضفنا خواص متطابقة لخواص البوردر
-                      decoration: ShapeDecoration(
-                        color: Colors.white, // لا تنسَ لون الخلفية لتكون ظاهرة
-                        shape: BeveledRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                      ),
-                      height:
-                          200, // 👈 هذا يحدد الارتفاع فقط على قدر مربع في أسفل الشاشة
-                      width: 500,
-
-                      child: Text("Hello everyone"),
-                    ),
-
-                    enterBottomSheetDuration: Duration(seconds: 1),
-                    exitBottomSheetDuration: Duration(seconds: 1),
-                    isDismissible: true,
-                    shape: BeveledRectangleBorder(
-                      side: BorderSide(color: Colors.blue, width: 5.0),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
+                  Get.toNamed(
+                    "/pageone",
+                    //الخاصية الاولى
+                    arguments: {
+                      "name": "Noura Hassanin",
+                      "age": "23",
+                      "birthday": "25/5/2002",
+                    },
                   );
                 },
-                child: Text("SnakBar Getx"),
+                child: Text("to pageone"),
               ),
             ),
           ],

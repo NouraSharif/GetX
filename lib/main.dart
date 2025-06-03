@@ -1,4 +1,5 @@
 import 'package:app1/view/home.dart';
+import 'package:app1/view/pageone.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +17,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
       initialRoute: "/home",
-      getPages: [GetPage(name: "/home", page: () => Home())],
+      getPages: [
+        GetPage(name: "/home", page: () => Home()),
+        GetPage(name: "/pageone", page: () => PageOne()),
+      ],
     );
   }
 }
