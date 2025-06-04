@@ -53,6 +53,52 @@ class PageOne extends StatelessWidget {
               },
               child: Text("check"),
             ),
+
+            //الخاصية الخامسة
+            SizedBox(height: 20),
+            MaterialButton(
+              color: Colors.blue,
+              onPressed: () {
+                print(GetPlatform.isDesktop);
+              },
+              child: Text("platform"), //true==emulator(chroom)
+            ),
+            //الخاصية السادسة
+            SizedBox(height: 20),
+            MaterialButton(
+              color: Colors.blue,
+              onPressed: () {
+                print(Get.height);
+              },
+              child: Text("Dimensions-height"),
+            ),
+            SizedBox(height: 20),
+            MaterialButton(
+              color: Colors.blue,
+              onPressed: () {
+                print(Get.width);
+              },
+              child: Text("Dimensions-width"),
+            ),
+            //الخاصية السابعة
+            SizedBox(height: 20),
+            MaterialButton(
+              color: Colors.blue,
+              onPressed: () {
+                print(context.isLandscape); //false :الوضع الافقي
+                //isportrait ==true لانه الكروم ع الاغلب دائما في الوضع الطولي
+              },
+              child: Text("isLandscape-portrait"),
+            ),
+            //الخاصية الثامنة
+            SizedBox(height: 20),
+            MaterialButton(
+              color: Colors.blue,
+              onPressed: () {
+                print(context.isLargeTablet); //false ==هو مش تابلت اساسا
+              },
+              child: Text("tablet"),
+            ),
           ],
         ),
       ),
