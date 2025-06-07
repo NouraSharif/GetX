@@ -7,15 +7,14 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Hompage"), backgroundColor: Colors.blue),
+      appBar: AppBar(title: Text("Hompage")),
       body: Container(
         padding: EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
-              child: MaterialButton(
-                color: Colors.blue,
+              child: ElevatedButton(
                 onPressed: () {
                   Get.toNamed(
                     "/pageone",

@@ -1,4 +1,5 @@
 import 'package:app1/controller/pageone_controller.dart';
+import 'package:app1/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,10 +10,7 @@ class PageOne extends StatelessWidget {
   Widget build(BuildContext context) {
     PageOneController controller = Get.put(PageOneController());
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('PageOne'),
-        backgroundColor: Colors.blue,
-      ),
+      appBar: AppBar(title: const Text('PageOne')),
       body: Center(
         child: Column(
           children: [
@@ -29,8 +27,7 @@ class PageOne extends StatelessWidget {
             //الخاصية الثالثة
             Text(Get.currentRoute),
             SizedBox(height: 20),
-            MaterialButton(
-              color: Colors.blue,
+            ElevatedButton(
               onPressed: () {
                 Get.toNamed("/home");
               },
@@ -38,16 +35,14 @@ class PageOne extends StatelessWidget {
             ),
             SizedBox(height: 20),
             //الخاصية الرابعة....==//bottomSheet ,dialog
-            MaterialButton(
-              color: Colors.blue,
+            ElevatedButton(
               onPressed: () {
                 Get.snackbar("hello noura", "I miss you");
               },
               child: Text("SnackBar"),
             ),
             SizedBox(height: 20),
-            MaterialButton(
-              color: Colors.blue,
+            ElevatedButton(
               onPressed: () {
                 print(Get.isSnackbarOpen);
               },
@@ -56,8 +51,7 @@ class PageOne extends StatelessWidget {
 
             //الخاصية الخامسة
             SizedBox(height: 20),
-            MaterialButton(
-              color: Colors.blue,
+            ElevatedButton(
               onPressed: () {
                 print(GetPlatform.isDesktop);
               },
@@ -65,16 +59,14 @@ class PageOne extends StatelessWidget {
             ),
             //الخاصية السادسة
             SizedBox(height: 20),
-            MaterialButton(
-              color: Colors.blue,
+            ElevatedButton(
               onPressed: () {
                 print(Get.height);
               },
               child: Text("Dimensions-height"),
             ),
             SizedBox(height: 20),
-            MaterialButton(
-              color: Colors.blue,
+            ElevatedButton(
               onPressed: () {
                 print(Get.width);
               },
@@ -82,8 +74,7 @@ class PageOne extends StatelessWidget {
             ),
             //الخاصية السابعة
             SizedBox(height: 20),
-            MaterialButton(
-              color: Colors.blue,
+            ElevatedButton(
               onPressed: () {
                 print(context.isLandscape); //false :الوضع الافقي
                 //isportrait ==true لانه الكروم ع الاغلب دائما في الوضع الطولي
@@ -92,12 +83,27 @@ class PageOne extends StatelessWidget {
             ),
             //الخاصية الثامنة
             SizedBox(height: 20),
-            MaterialButton(
-              color: Colors.blue,
+            ElevatedButton(
               onPressed: () {
                 print(context.isLargeTablet); //false ==هو مش تابلت اساسا
               },
               child: Text("tablet"),
+            ),
+
+            //-------------------------------------------------------------------
+            //ThemeData
+            SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                if (Get.isDarkMode) {
+                  Get.changeTheme(Themes.customLightMode);
+                  sharedpref!.setString("theme", "light");
+                } else {
+                  Get.changeTheme(Themes.customDarkMode);
+                  sharedpref!.setString("theme", "dark");
+                }
+              },
+              child: Text("Themes"),
             ),
           ],
         ),
